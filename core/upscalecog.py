@@ -146,7 +146,7 @@ class UpscaleCog(commands.Cog):
             else:
                 await queuehandler.process_dream(self, queuehandler.UpscaleObject(self, *input_tuple, view))
             if user_queue_limit != "Stop":
-                await ctx.send_response(f'<@{ctx.author.id}>, {settings.messages()}\nQueue: ``{len(queuehandler.GlobalQueue.queue)}`` - Scale: ``{resize}``x - Upscaler: ``{upscaler_1}``{reply_adds}')
+                await ctx.send_response(f'<@{ctx.author.id}> {settings.messages()}\nQueue: ``{len(queuehandler.GlobalQueue.queue)}`` - Scale: ``{resize}``x - Upscaler: ``{upscaler_1}``{reply_adds}')
 
     # the function to queue Discord posts
     def post(self, event_loop: AbstractEventLoop, post_queue_object: queuehandler.PostObject):
@@ -222,7 +222,7 @@ class UpscaleCog(commands.Cog):
                     buffer.seek(0)
 
                     draw_time = '{0:.3f}'.format(end_time - start_time)
-                    message = f'my upscale of ``{queue_object.resize}``x took me ``{draw_time}`` seconds!'
+                    message = f'my upscale of ``{queue_object.resize}``x took ``{draw_time}`` seconds'
                     file = discord.File(fp=buffer, filename=f'{self.file_name[0:120]}-{queue_object.resize}.png')
 
                     queuehandler.process_post(

@@ -382,7 +382,7 @@ class DrawView(View):
 
                 if user_queue_limit != "Stop":
                     await interaction.response.send_message(
-                        f'<@{interaction.user.id}>, {settings.messages()}\nQueue: '
+                        f'<@{interaction.user.id}> {settings.messages()}\nQueue: '
                         f'``{len(queuehandler.GlobalQueue.queue)}`` - ``{seed_tuple[1]}``'
                         f'\nNew Seed:``{seed_tuple[10]}``')
             else:
@@ -433,7 +433,7 @@ class DrawView(View):
 
                     if user_queue_limit != "Stop":
                         await interaction.response.send_message(
-                            f'<@{interaction.user.id}>, {settings.messages()}\nQueue: '
+                            f'<@{interaction.user.id}> {settings.messages()}\nQueue: '
                             f'``{len(queuehandler.GlobalQueue.queue)}`` - Upscaling')
             else:
                 await interaction.response.send_message("You can't use other people's ⬆️!", ephemeral=True)

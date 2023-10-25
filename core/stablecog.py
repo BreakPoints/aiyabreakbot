@@ -341,7 +341,7 @@ class StableCog(commands.Cog, name='Stable Diffusion', description='Create image
         else:
             await queuehandler.process_dream(self, queuehandler.DrawObject(self, *input_tuple, view))
         if user_queue_limit != "Stop":
-            await ctx.send_response(f'<@{ctx.author.id}>, {settings.messages()}\nQueue: ``{len(queuehandler.GlobalQueue.queue)}`` - ``{simple_prompt}``\nSteps: ``{steps}``{reply_adds}')
+            await ctx.send_response(f'<@{ctx.author.id}> {settings.messages()}\nQueue: ``{len(queuehandler.GlobalQueue.queue)}`` - ``{simple_prompt}``\nSteps: ``{steps}``{reply_adds}')
 
     # the function to queue Discord posts
     def post(self, event_loop: queuehandler.GlobalQueue.post_event_loop, post_queue_object: queuehandler.PostObject):
@@ -518,9 +518,9 @@ class StableCog(commands.Cog, name='Stable Diffusion', description='Create image
 
             # set up discord message
             content = f'> for {queue_object.ctx.author.name}'
-            noun_descriptor = "drawing" if image_count == 1 else f'{image_count} drawings'
+            noun_descriptor = "hallucination" if image_count == 1 else f'{image_count} hallucinations'
             draw_time = '{0:.3f}'.format(end_time - start_time)
-            message = f'my {noun_descriptor} of ``{queue_object.simple_prompt}`` took me ``{draw_time}`` seconds!'
+            message = f'my {noun_descriptor} of ``{queue_object.simple_prompt}`` took ``{draw_time}`` seconds'
 
             view = queue_object.view
 
