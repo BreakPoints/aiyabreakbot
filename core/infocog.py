@@ -249,13 +249,13 @@ class InfoView(View):
 
         embed_tips1 = discord.Embed(title="Documentation", description="Welcome to the documentation! Basic usage and prompting tips is explained here.",
                                     colour=settings.global_var.embed_color)
-        embed_tips1.add_field(name="/draw command", value="Simply fill in the prompt and hit send!"
+        embed_tips1.add_field(name="/draw command", value="Simply fill in the prompt and hit send."
                                                           "\nThere are many additional options, but they are automatically set filled with presets. They aren't required unless you want to tweak your prompts.")
         embed_tips1.add_field(name="image-to-image", value="Use the /draw command for this, **init_img** option for an attachment or **init_url** for a link."
                                                            "\nNote that **strength** interacts with img2img. The range is 0.0 to 1.0, with higher values having more effect on the image.")
         embed_tips1.add_field(name="\u200B", value="\u200B")
         embed_tips1.add_field(name="/identify command", value="This command makes a caption for your image. A standard caption is generated with normal **phrasing**, or tags can be used to generate a list of keywords.")
-        embed_tips1.add_field(name="/upscale command", value="A simple command to upscale your image! You can upscale up to 4x at a time.")
+        embed_tips1.add_field(name="/upscale command", value="A simple command to upscale your image. You can upscale up to 4x at a time.")
         embed_tips1.add_field(name="\u200B", value="\u200B")
 
         embed_tips2 = discord.Embed(title="Basic Prompting Tips", colour=settings.global_var.embed_color)
@@ -263,7 +263,7 @@ class InfoView(View):
                               value="Word order influences the image. Putting `cat, dog` will lean more towards cat."
                                    "\nKeep this in mind when doing very long prompts.",)
         embed_tips2.add_field(name="Steps",
-                              value="This is how many cycles the AI takes to create an image. More steps generally leads to better results, but not always!",)
+                              value="This is how many cycles the AI takes to create an image. More steps generally leads to better results, but not always.",)
         embed_tips2.add_field(name="\u200B", value="\u200B")
         embed_tips2.add_field(name="Guidance Scale",
                               value="This represents how much importance is given to your prompt. The AI will give more attention to your prompt with higher values and be more creative with lower values.",)
@@ -299,7 +299,7 @@ class InfoView(View):
         embed_tips4.add_field(name="📋",
                               value="The clipboard provides the information used to make the image, and even provides the command for copying!")
         embed_tips4.add_field(name="⬆️",
-                              value="The up arrow allows you to quickly upscale a single image!")
+                              value="The up arrow allows you to quickly upscale a single image.")
         embed_tips4.add_field(name="\u200B", value="\u200B")
         embed_tips4.add_field(name="❌",
                               value="The button used to delete any unwanted outputs. If this button isn't working, you can add a ❌ reaction instead.")
@@ -324,7 +324,7 @@ class InfoView(View):
         wiki = 'https://github.com/Kilvoctu/aiyabot/wiki#using-aiya'
         embed_tips7 = discord.Embed(title="Extra Information",
                                     description=f"For more detailed documentation, check out the [wiki]({wiki}) in my [home]({url})!\n\n"
-                                                f"Also, feel free to report bugs or leave feedback! I'm open-source Python Discord bot AIYA, developed by *Kilvoctu#1238*, maintained with care."
+                                                f"Also, feel free to report bugs or leave feedback! I'm open-source Python Discord bot AIYA, developed by *Kilvoctu#1238*, maintained with care. Modified slightly by *BreakPoints#1238*"
                                                 f"\n\nPlease enjoy making AI art with me~!",
                                     colour=settings.global_var.embed_color)
         embed_tips7.set_thumbnail(url=thumb)
@@ -387,7 +387,7 @@ class InfoCog(commands.Cog):
     )
     async def info(self, ctx, batch_id: Optional[str] = None, image_id: Optional[str] = None):
         if not batch_id and not image_id:
-            first_embed = discord.Embed(title='Select a button!',
+            first_embed = discord.Embed(title='Select a button',
                                         description='You can check lists of any extra content I have loaded!'
                                                     '\nAlso check documentation for usage information!',
                                         colour=settings.global_var.embed_color)

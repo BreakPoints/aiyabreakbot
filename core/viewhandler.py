@@ -42,7 +42,7 @@ tuple_names = ['ctx', 'simple_prompt', 'prompt', 'negative_prompt', 'data_model'
 # the modal that is used for the 🖋 button
 class DrawModal(Modal):
     def __init__(self, input_tuple) -> None:
-        super().__init__(title="Change Prompt!")
+        super().__init__(title="Change Prompt")
         self.input_tuple = input_tuple
 
         # run through mod function to get clean negative since I don't want to add it to stablecog tuple
@@ -92,7 +92,7 @@ class DrawModal(Modal):
 
         self.add_item(
             InputText(
-                label='Extended edit (for advanced user!)',
+                label='Extended edit (for advanced user)',
                 style=discord.InputTextStyle.long,
                 value=ex_params,
                 required=False
@@ -148,7 +148,7 @@ class DrawModal(Modal):
                             break
                     if not model_found:
                         embed_err.add_field(name=f"`{line.split(':', 1)[1]}` is not found.",
-                                            value="I used the info command for you! Try one of these models!")
+                                            value="I've triggered the info command for you. Try one of these models.")
                         await interaction.response.send_message(embed=embed_err, ephemeral=True)
                         await infocog.InfoView.button_model(infocog_view, '', interaction)
                         return
@@ -205,7 +205,7 @@ class DrawModal(Modal):
                     pen[14] = line.split(':', 1)[1]
                 else:
                     embed_err.add_field(name=f"`{line.split(':', 1)[1]}` isn't my style.",
-                                        value="I've pulled up the styles list for you from the info command!")
+                                        value="I've pulled up the styles list for you from the info command.")
                     await interaction.response.send_message(embed=embed_err, ephemeral=True)
                     await infocog.InfoView.button_style(infocog_view, '', interaction)
                     return
@@ -234,7 +234,7 @@ class DrawModal(Modal):
                     pen[18] = line.split(':', 1)[1]
                 else:
                     embed_err.add_field(name=f"`{line.split(':', 1)[1]}` is an unknown extra network!",
-                                        value="I used the info command for you! Please review the hypernets and LoRAs.")
+                                        value="I've triggered the info command for you. Please review the hypernets and LoRAs.")
                     await interaction.response.send_message(embed=embed_err, ephemeral=True)
                     await infocog.InfoView.button_hyper(infocog_view, '', interaction)
                     return
@@ -248,7 +248,7 @@ class DrawModal(Modal):
             if settings.global_var.prompt_ban_list or settings.global_var.prompt_ignore_list or settings.global_var.negative_prompt_prefix:
                 mod_results = settings.prompt_mod(self.children[0].value, self.children[1].value)
                 if settings.global_var.prompt_ban_list and mod_results[0] == "Stop":
-                    await interaction.response.send_message(f"I'm not allowed to draw the word {mod_results[1]}!", ephemeral=True)
+                    await interaction.response.send_message(f"I'm not allowed to dream about {mod_results[1]}.", ephemeral=True)
                     return
                 if settings.global_var.prompt_ignore_list or settings.global_var.negative_prompt_prefix and mod_results[0] == "Mod":
                     if settings.global_var.display_ignored_words == "False":
@@ -339,7 +339,7 @@ class DrawView(View):
                 else:
                     await interaction.response.send_modal(DrawModal(self.input_tuple))
             else:
-                await interaction.response.send_message("You can't use other people's 🖋!", ephemeral=True)
+                await interaction.response.send_message("You can't use other people's 🖋", ephemeral=True)
         except Exception as e:
             print('The pen button broke: ' + str(e))
             # if interaction fails, assume it's because aiya restarted (breaks buttons)
@@ -386,7 +386,7 @@ class DrawView(View):
                         f'``{len(queuehandler.GlobalQueue.queue)}`` - ``{seed_tuple[1]}``'
                         f'\nNew Seed:``{seed_tuple[10]}``')
             else:
-                await interaction.response.send_message("You can't use other people's 🎲!", ephemeral=True)
+                await interaction.response.send_message("You can't use other people's 🎲", ephemeral=True)
         except Exception as e:
             print('The dice roll button broke: ' + str(e))
             # if interaction fails, assume it's because aiya restarted (breaks buttons)
@@ -409,7 +409,7 @@ class DrawView(View):
                 # check if we are dealing with a batch or a single image.
                 batch = self.input_tuple[13]
                 if batch[0] != 1 or batch[1] != 1:
-                    await interaction.response.send_message("Use the drop down menu to upscale batch images!", ephemeral=True) # tell user to use dropdown for upscaling
+                    await interaction.response.send_message("Use the drop down menu to upscale batch images.", ephemeral=True) # tell user to use dropdown for upscaling
                 else:
                     init_image = self.message.attachments[0]
                     ctx = self.input_tuple[0]
@@ -436,7 +436,7 @@ class DrawView(View):
                             f'<@{interaction.user.id}> {settings.messages()}\nQueue: '
                             f'``{len(queuehandler.GlobalQueue.queue)}`` - Upscaling')
             else:
-                await interaction.response.send_message("You can't use other people's ⬆️!", ephemeral=True)
+                await interaction.response.send_message("You can't use other people's ⬆️", ephemeral=True)
         except Exception as e:
             print('The upscale button broke: ' + str(e))
             # if interaction fails, assume it's because aiya restarted (breaks buttons)

@@ -143,7 +143,7 @@ class StableCog(commands.Cog, name='Stable Diffusion', description='Create image
     @option(
         'init_url',
         str,
-        description='The starter URL image for generation. This overrides init_image!',
+        description='The starter URL image for generation. This overrides init_image.',
         required=False,
     )
     @option(
@@ -209,7 +209,7 @@ class StableCog(commands.Cog, name='Stable Diffusion', description='Create image
         if settings.global_var.prompt_ban_list or settings.global_var.prompt_ignore_list or settings.global_var.negative_prompt_prefix:
             mod_results = settings.prompt_mod(simple_prompt, negative_prompt)
             if mod_results[0] == "Stop":
-                await ctx.respond(f"I'm not allowed to draw the word {mod_results[1]}!", ephemeral=True)
+                await ctx.respond(f"I'm not allowed to dream about {mod_results[1]}.", ephemeral=True)
                 return
             if mod_results[0] == "Mod":
                 if settings.global_var.display_ignored_words == "False":
@@ -303,7 +303,7 @@ class StableCog(commands.Cog, name='Stable Diffusion', description='Create image
                     requested = batch[0]
                     batch[0], batch[1] = difference, multiple
                     if requested % difference != 0:
-                        reply_adds += f"\nI can't draw exactly ``{requested}`` pictures! Settling for ``{new_total}``."
+                        reply_adds += f"\nI can't hallucinate exactly ``{requested}`` pictures! Settling for ``{new_total}``."
             # check batch values against the maximum limits
             if batch[0] > max_batch[0]:
                 reply_adds += f"\nThe max batch count I'm allowed here is ``{max_batch[0]}``!"

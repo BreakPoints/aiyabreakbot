@@ -39,7 +39,7 @@ class UpscaleCog(commands.Cog):
     @option(
         'init_url',
         str,
-        description='The starter URL image to upscale. This overrides init_image!',
+        description='The starter URL image to upscale. This overrides init_image.',
         required=False,
     )
     @option(
@@ -127,10 +127,10 @@ class UpscaleCog(commands.Cog):
         # check if resize is within limits
         if float(resize) < 1.0:
             resize = 1.0
-            reply_adds += f"\nResize can't go below 1.0x! Setting it to ``{resize}``."
+            reply_adds += f"\nResize can't go below 1.0x. Setting it to ``{resize}``."
         if float(resize) > 4.0:
             resize = 4.0
-            reply_adds += f"\nResize can't go above 4.0x! Setting it to ``{resize}``."
+            reply_adds += f"\nResize can't go above 4.0x. Setting it to ``{resize}``."
 
         # set up tuple of parameters
         input_tuple = (ctx, resize, init_image, upscaler_1, upscaler_2, upscaler_2_strength, gfpgan, codeformer, upscale_first)

@@ -56,7 +56,7 @@ class GenerateCog(commands.Cog):
             generated_text = res[0]['generated_text']
 
             # Create an Embed object
-            embed = discord.Embed(title="What about this as Prompt ?!", description=generated_text, color=0x00ff00)
+            embed = discord.Embed(title="What about this as Prompt?", description=generated_text, color=0x00ff00)
 
             # post to discord
             queuehandler.process_post(

@@ -138,7 +138,7 @@ async def parse_image_info(ctx, image_url, command):
             negative_prompt = mod_results[3]
 
         # create embed and give the best effort in trying to parse the png info
-        embed = discord.Embed(title="About the image!", description="")
+        embed = discord.Embed(title="About the image", description="")
         if not has_init_url:  # for some reason this bugs out the embed
             embed.set_thumbnail(url=image_url)
         if len(prompt_field) > 1024:
@@ -267,7 +267,7 @@ async def quick_upscale(self, ctx, message: discord.Message):
         await queuehandler.process_dream(upscale_dream, queuehandler.UpscaleObject(upscale_dream, *input_tuple, view))
     if user_queue_limit != "Stop":
         await ctx.send_response(
-            f'<@{ctx.author.id}>, upscaling {message}by ``{resize}``x using ``{upscaler_1}``!\n'
+            f'<@{ctx.author.id}>, upscaling {message}by ``{resize}``x using ``{upscaler_1}``.\n'
             f'Queue: ``{len(queuehandler.GlobalQueue.queue)}``', delete_after=45.0)
         
 async def batch_download(ctx, message: discord.Message):
